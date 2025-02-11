@@ -6,6 +6,7 @@ const blogSchema = new Schema<TBlog>({
     content: {type: String,required:[true,"Content is required"]},
     image: {type: String,required:[true,"Image is required"]},
     category: {type: String,required:[true,"Category is required"]},
+    deleted: {type: Boolean,default:false}
 },  {
     timestamps: true,
     versionKey: false,

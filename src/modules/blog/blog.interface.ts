@@ -5,4 +5,5 @@ export type TBlog = {
   content: string;
   image: string;
   category: string;
+  deleted: boolean;
 };

@@ -25,6 +25,12 @@ const createBlogIntoDB = async (file:any,blog:TBlog) => {
     }
 }
 
+const getAllBlogsFromDB = async () => {
+    const blogs = await BlogModel.find({deleted:false});
+    return blogs;
+}
+
 export const BlogServices = {
-    createBlogIntoDB
+    createBlogIntoDB,
+    getAllBlogsFromDB
 }

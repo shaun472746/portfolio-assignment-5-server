@@ -38,5 +38,6 @@ router.post(
     validateMiddleware(blogValidation.createBlogValidationSchema),
     BlogControllers.createBlog
   );
+  router.get("/",BlogControllers.getBlogs)
 
   export const BlogRoutes = router;
