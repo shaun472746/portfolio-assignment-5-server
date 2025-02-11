@@ -8,12 +8,9 @@ const createBlogValidationSchema = z.object({
           content: z.string({
             required_error: "Content is required",
           }),
-          image: z.string({
-            required_error: "Image is required",
-          }),
           category: z.string({
             required_error: "Category is required",
-          }),
+          })
     })
 })
 

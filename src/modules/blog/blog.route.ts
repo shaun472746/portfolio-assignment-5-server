@@ -3,6 +3,8 @@ const fs = require("fs");
 const path = require("path");
 import validateMiddleware from "../../app/middleware/validateRequest";
 import { blogValidation } from "./blog.zod.validation";
+import { upload } from "../../app/utils/sendImageToCloudinary";
+import { BlogControllers } from "./blog.controller";
 
 
 const router = express.Router();
@@ -12,6 +14,8 @@ router.post(
   
     (req: Request, res: Response, next: NextFunction) => {
       const folderName = "uploads";
+
+
       // Create the full path to the folder
       const folderPath = path.join(process.cwd(), folderName);
   
@@ -25,10 +29,14 @@ router.post(
     },
     upload.single("file"),
     (req: Request, res: Response, next: NextFunction) => {
+
+
       req.body = JSON.parse(req.body.data);
       next();
     },
   
     validateMiddleware(blogValidation.createBlogValidationSchema),
-    // BookControllers.createBook
+    BlogControllers.createBlog
   );
+
+  export const BlogRoutes = router;
