@@ -1,8 +1,6 @@
-
-
 export type TMessage = {
-    name: string;
-    email: string;
-    message: string;
-    deleted: boolean;
-  };
+  name: string
+  email: string
+  message: string
+  deleted: boolean
+}
