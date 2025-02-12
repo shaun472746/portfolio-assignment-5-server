@@ -32,7 +32,7 @@ const getProjects = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Project created successfully!',
+    message: 'Project retrieved successfully!',
     data: result,
   })
 })

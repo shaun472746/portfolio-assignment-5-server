@@ -44,7 +44,7 @@ const updateProjectIntoDB = async (
     const { secure_url } = await sendImageToCloudinary(imageName, path)
     project.image = secure_url as string
   }
-  console.log(project, id)
+
   const result = await ProjectModel.findByIdAndUpdate(id, project, {
     new: true,
   })

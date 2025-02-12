@@ -1,23 +1,18 @@
 import express from 'express'
 
 import validateMiddleware from '../../app/middleware/validateRequest'
-import { projectValidation } from '../project/project.zod.validation'
-import { ProjectControllers } from '../project/project.controller'
+import { messageValidation } from './message.zod.validation'
+import { MessageControllers } from './message.controller'
 
 const router = express.Router()
 
 router.post(
   '/',
 
-  validateMiddleware(projectValidation.createProjectValidationSchema),
-  ProjectControllers.createProject,
+  validateMiddleware(messageValidation.createMessageValidationSchema),
+  MessageControllers.createMessage,
 )
-router.put(
-  '/:projectId',
-  validateMiddleware(projectValidation.createProjectValidationSchema),
-  ProjectControllers.updateProject,
-)
-router.get('/', ProjectControllers.getProjects)
-router.delete('/:projectId', ProjectControllers.deleteProject)
+
+router.get('/', MessageControllers.getMessages)
 
 export const MessageRoutes = router

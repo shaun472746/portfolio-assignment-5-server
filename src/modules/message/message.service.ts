@@ -10,6 +10,14 @@ const createMessageIntoDB = async (message: TMessage) => {
   }
 }
 
+const getAllMessagesFromDB = async () => {
+  const messages = await MessageModel.find({ deleted: false }).select(
+    '-updatedAt -deleted -createdAt',
+  )
+  return messages
+}
+
 export const MessageServices = {
   createMessageIntoDB,
+  getAllMessagesFromDB
 }

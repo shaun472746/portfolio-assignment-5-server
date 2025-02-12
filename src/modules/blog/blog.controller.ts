@@ -27,7 +27,7 @@ const getBlogs = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Blog created successfully!',
+    message: 'Blog retrieved successfully!',
     data: result,
   })
 })
