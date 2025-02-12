@@ -19,5 +19,5 @@ const getAllMessagesFromDB = async () => {
 
 export const MessageServices = {
   createMessageIntoDB,
-  getAllMessagesFromDB
+  getAllMessagesFromDB,
 }
