@@ -26,11 +26,37 @@ const createBlogIntoDB = async (file:any,blog:TBlog) => {
 }
 
 const getAllBlogsFromDB = async () => {
-    const blogs = await BlogModel.find({deleted:false});
+    const blogs = await BlogModel.find({deleted:false}).select("-updatedAt -deleted -createdAt");
     return blogs;
+}
+
+const updateBlogIntoDB = async (
+    id: string,
+    file: any,
+    blog: TBlog
+  ) => {
+    if (file) {
+        const timestamp = Date.now();
+            
+        const imageName = `${timestamp}`;
+        const path = file?.path;
+
+        const {secure_url} = await sendImageToCloudinary(imageName,path);
+        blog.image = secure_url as string;
+    }
+
+    const result = await BlogModel.findByIdAndUpdate(id, blog, { new: true });
+    return result;
+  };
+
+const deleteBlogFromDB = async (id:string) => {
+    await BlogModel.findByIdAndUpdate(id,{deleted:true},{new:true});
+    return;
 }
 
 export const BlogServices = {
     createBlogIntoDB,
-    getAllBlogsFromDB
+    getAllBlogsFromDB,
+    deleteBlogFromDB,
+    updateBlogIntoDB
 }

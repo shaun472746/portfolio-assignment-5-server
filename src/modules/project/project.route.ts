@@ -2,10 +2,9 @@ import express, { NextFunction, Request, Response } from "express";
 const fs = require("fs");
 const path = require("path");
 import validateMiddleware from "../../app/middleware/validateRequest";
-import { blogValidation } from "./blog.zod.validation";
 import { upload } from "../../app/utils/sendImageToCloudinary";
-import { BlogControllers } from "./blog.controller";
-
+import { projectValidation } from "./project.zod.validation";
+import { ProjectControllers } from "./project.controller";
 
 const router = express.Router();
 
@@ -35,11 +34,11 @@ router.post(
       next();
     },
   
-    validateMiddleware(blogValidation.createBlogValidationSchema),
-    BlogControllers.createBlog
+    validateMiddleware(projectValidation.createProjectValidationSchema),
+    ProjectControllers.createProject
   );
-router.put(
-    "/:blogId",
+  router.put(
+    "/:projectId",
   
     (req: Request, res: Response, next: NextFunction) => {
       const folderName = "uploads";
@@ -64,11 +63,10 @@ router.put(
       next();
     },
   
-    validateMiddleware(blogValidation.createBlogValidationSchema),
-    BlogControllers.updateBlog
+    validateMiddleware(projectValidation.createProjectValidationSchema),
+    ProjectControllers.updateProject
   );
-  router.get("/",BlogControllers.getBlogs)
-  router.delete("/:blogId",BlogControllers.deleteBlog)
+  router.get("/",ProjectControllers.getProjects)
+  router.delete("/:project",ProjectControllers.deleteProject)
 
-
-  export const BlogRoutes = router;
+export const ProjectRoutes = router;
