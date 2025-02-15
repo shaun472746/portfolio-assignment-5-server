@@ -61,6 +61,7 @@ router.put(
   ProjectControllers.updateProject,
 )
 router.get('/', ProjectControllers.getProjects)
+router.get('/:projectId',ProjectControllers.getSingleProject)
 router.delete('/:project', ProjectControllers.deleteProject)
 
 export const ProjectRoutes = router

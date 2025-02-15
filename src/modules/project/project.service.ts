@@ -55,9 +55,15 @@ const deleteProjectFromDB = async (id: string) => {
   await ProjectModel.findByIdAndUpdate(id, { deleted: true }, { new: true })
   return
 }
+
+const getSingleProjectFromDB = async (id:string) => {
+  const result = ProjectModel.findById(id);
+  return result;
+}
 export const ProjectServices = {
   createProjectIntoDB,
   getAllProjectsFromDB,
   updateProjectIntoDB,
   deleteProjectFromDB,
+  getSingleProjectFromDB
 }
