@@ -10,8 +10,8 @@ const app: Application = express()
 app.use(express.json())
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
-    // origin: ["https://ph-assignment-4-client-book-shop.vercel.app"],
+    // origin: ['http://localhost:3000'],
+    origin: ["https://assignment-5-next-js-client.vercel.app"],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
