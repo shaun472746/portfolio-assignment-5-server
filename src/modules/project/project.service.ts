@@ -56,14 +56,14 @@ const deleteProjectFromDB = async (id: string) => {
   return
 }
 
-const getSingleProjectFromDB = async (id:string) => {
-  const result = ProjectModel.findById(id);
-  return result;
+const getSingleProjectFromDB = async (id: string) => {
+  const result = ProjectModel.findById(id)
+  return result
 }
 export const ProjectServices = {
   createProjectIntoDB,
   getAllProjectsFromDB,
   updateProjectIntoDB,
   deleteProjectFromDB,
-  getSingleProjectFromDB
+  getSingleProjectFromDB,
 }

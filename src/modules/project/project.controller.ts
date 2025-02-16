@@ -37,14 +37,14 @@ const getProjects = catchAsync(async (req, res) => {
   })
 })
 
-const getSingleProject = catchAsync(async (req,res)=>{
+const getSingleProject = catchAsync(async (req, res) => {
   const { projectId } = req.params
-  const result = await ProjectServices.getSingleProjectFromDB(projectId);
-  sendResponse(res,{
+  const result = await ProjectServices.getSingleProjectFromDB(projectId)
+  sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'Project retrieved successfully!',
-    data: result
+    data: result,
   })
 })
 
@@ -63,5 +63,5 @@ export const ProjectControllers = {
   updateProject,
   getProjects,
   deleteProject,
-  getSingleProject
+  getSingleProject,
 }
